@@ -1,0 +1,46 @@
+extends html/layout.pug
+
+block content
+  h2 Init
+  code.
+    import loggout from 'loggout';
+    <br />
+    const loggout = new Logout({
+      level: Logout.LEVELS.debug;
+    });
+  h3 Debug
+  code.
+    logger.debug('Hello World');
+  button.mt-4.js-test__debug test
+  h3 Debug
+  code.
+    logger.info('Hello World');
+  button.mt-4.js-test__info test
+  h3 Log
+  code.
+    logger.log('Hello World');
+  button.mt-4.js-test__log test
+  h3 Warn
+  code.
+    logger.warn('Hello World');
+  button.mt-4.js-test__warn test
+  h3 Error
+  code.
+    logger.error('Hello World');
+  button.mt-4.js-test__error test
+  h3 Timer
+  code.
+    const timelyMeth = () => {
+      <br />
+      &nbsp;let incr = 0;
+      <br />
+      &nbsp;for (const i = 1; i <= 1e6; i++) {
+      <br />
+      &nbsp;&nbsp;incr += i;
+      <br />
+      &nbsp;}
+      <br />
+    }
+    <br />
+    logger.time(timelyMeth);
+  button.mt-4.js-test__timer test

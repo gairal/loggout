@@ -8,7 +8,6 @@ ___
 ## TODO:
 - [ ]: switch to rollup
 - [ ]: build system Travis
-- [ ]: update stack with logger
 ___
 
 ## Motivation

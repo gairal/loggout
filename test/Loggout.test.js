@@ -9,19 +9,30 @@ describe('Logger', () => {
     expect(logger).toBeInstanceOf(Loggout);
   });
 
+  it('Sillies', () => {
+    logger.level = Loggout.LEVELS.silly;
+    expect(logger.silly('TEST')).toBeTruthy();
+    expect(logger.debug('TEST')).toBeTruthy();
+    expect(logger.verbose('TEST')).toBeTruthy();
+    expect(logger.info('TEST')).toBeTruthy();
+    expect(logger.warn('TEST')).toBeTruthy();
+    expect(logger.error('TEST')).toBeTruthy();
+  });
   it('Debugs', () => {
     logger.level = Loggout.LEVELS.debug;
+    expect(logger.silly('TEST')).toBeFalsy();
     expect(logger.debug('TEST')).toBeTruthy();
-    expect(logger.log('TEST')).toBeTruthy();
+    expect(logger.verbose('TEST')).toBeTruthy();
     expect(logger.info('TEST')).toBeTruthy();
     expect(logger.warn('TEST')).toBeTruthy();
     expect(logger.error('TEST')).toBeTruthy();
   });
 
-  it('Logs', () => {
-    logger.level = Loggout.LEVELS.log;
+  it('Verboses', () => {
+    logger.level = Loggout.LEVELS.verbose;
+    expect(logger.silly('TEST')).toBeFalsy();
     expect(logger.debug('TEST')).toBeFalsy();
-    expect(logger.log('TEST')).toBeTruthy();
+    expect(logger.verbose('TEST')).toBeTruthy();
     expect(logger.info('TEST')).toBeTruthy();
     expect(logger.warn('TEST')).toBeTruthy();
     expect(logger.error('TEST')).toBeTruthy();
@@ -29,8 +40,9 @@ describe('Logger', () => {
 
   it('Infos', () => {
     logger.level = Loggout.LEVELS.info;
+    expect(logger.silly('TEST')).toBeFalsy();
     expect(logger.debug('TEST')).toBeFalsy();
-    expect(logger.log('TEST')).toBeFalsy();
+    expect(logger.verbose('TEST')).toBeFalsy();
     expect(logger.info('TEST')).toBeTruthy();
     expect(logger.warn('TEST')).toBeTruthy();
     expect(logger.error('TEST')).toBeTruthy();
@@ -38,8 +50,9 @@ describe('Logger', () => {
 
   it('Warns', () => {
     logger.level = Loggout.LEVELS.warn;
+    expect(logger.silly('TEST')).toBeFalsy();
     expect(logger.debug('TEST')).toBeFalsy();
-    expect(logger.log('TEST')).toBeFalsy();
+    expect(logger.verbose('TEST')).toBeFalsy();
     expect(logger.info('TEST')).toBeFalsy();
     expect(logger.warn('TEST')).toBeTruthy();
     expect(logger.error('TEST')).toBeTruthy();
@@ -47,8 +60,9 @@ describe('Logger', () => {
 
   it('Errors', () => {
     logger.level = Loggout.LEVELS.error;
+    expect(logger.silly('TEST')).toBeFalsy();
     expect(logger.debug('TEST')).toBeFalsy();
-    expect(logger.log('TEST')).toBeFalsy();
+    expect(logger.verbose('TEST')).toBeFalsy();
     expect(logger.info('TEST')).toBeFalsy();
     expect(logger.warn('TEST')).toBeFalsy();
     expect(logger.error('TEST')).toBeTruthy();
@@ -57,8 +71,9 @@ describe('Logger', () => {
   it('Doesn\'t break', () => {
     logger.level = 777;
     expect(logger.prefix()).toEqual('');
+    expect(logger.silly('TEST')).toBeFalsy();
     expect(logger.debug('TEST')).toBeFalsy();
-    expect(logger.log('TEST')).toBeFalsy();
+    expect(logger.verbose('TEST')).toBeFalsy();
     expect(logger.info('TEST')).toBeFalsy();
     expect(logger.warn('TEST')).toBeFalsy();
     expect(logger.error('TEST')).toBeFalsy();
@@ -75,8 +90,9 @@ describe('Logger', () => {
     console.warn = null;
     console.error = null;
 
+    expect(logger.silly('TEST')).toBeTruthy();
     expect(logger.debug('TEST')).toBeTruthy();
-    expect(logger.log('TEST')).toBeTruthy();
+    expect(logger.verbose('TEST')).toBeTruthy();
     expect(logger.info('TEST')).toBeTruthy();
     expect(logger.warn('TEST')).toBeTruthy();
     expect(logger.error('TEST')).toBeTruthy();

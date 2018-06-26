@@ -2,19 +2,24 @@
   "name": "loggout",
   "version": "0.0.1",
   "description": "Dead simple yet powerful logger for the browser",
-  "author": "gairal",
+  "author": "Frank Gairal <frank@gairal.com> (https://frank.gairal.com/)",
   "readmeFilename": "README.md",
-  "main": "src/app/app.js",
+  "homepage": "https://github.com/gairal/loggout",
+  "bugs": {
+    "url" : "https://github.com/gairal/loggout/issues",
+    "email" : "frank@gairal.com"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/gairal/loggout.git"
+  },
+  "license" : "MIT",
+  "main": "dist/app.js",
   "keywords": [
-    "Front-end",
-    "Pug",
-    "Sass",
-    "css",
+    "browser",
+    "logger",
+    "es7",
     "JavaScript",
-    "Webpack",
-    "babel",
-    "es6",
-    "es2015",
     "jest"
   ],
   "scripts": {
@@ -66,8 +71,5 @@
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
     "write-file-webpack-plugin": "^4.3.2"
-  },
-  "dependencies": {
-    "es6-promise": "^4.1.1"
   }
 }

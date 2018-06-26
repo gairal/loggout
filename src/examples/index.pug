@@ -3,23 +3,27 @@ extends html/layout.pug
 block content
   h2 Init
   code.
-    import loggout from 'loggout';
+    import Loggout from 'loggout';
     <br />
-    const loggout = new Logout({
-      level: Logout.LEVELS.debug;
+    const loggout = new Loggout({
+      level: Loggout.LEVELS.debug,
     });
+  h3 Silly
+  code.
+    logger.silly('Hello World');
+  button.mt-4.js-test__silly test
   h3 Debug
   code.
     logger.debug('Hello World');
   button.mt-4.js-test__debug test
-  h3 Debug
+  h3 Info
   code.
     logger.info('Hello World');
   button.mt-4.js-test__info test
-  h3 Log
+  h3 Verbose
   code.
-    logger.log('Hello World');
-  button.mt-4.js-test__log test
+    logger.verbose('Hello World');
+  button.mt-4.js-test__verbose test
   h3 Warn
   code.
     logger.warn('Hello World');
@@ -44,3 +48,18 @@ block content
     <br />
     logger.time(timelyMeth);
   button.mt-4.js-test__timer test
+
+  h2 Custom prefix
+  code.
+    import Loggout from 'loggout';
+    <br />
+    const loggout = new Loggout({
+    <br />
+      &nbsp;level: Loggout.LEVELS.debug,
+    <br />
+      &nbsp;prefix: level => `LOGG(${level}):`,
+    <br />
+    });
+    <br />
+    loggout.error('test');
+  button.mt-4.js-test__prefix test

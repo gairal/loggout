@@ -7,9 +7,11 @@ export default class Loggout {
       prefix: (level) => {
         const ts = Date.now();
         switch (level) {
+          case Loggout.LEVELS.silly:
+            return `SILLY - ${ts}:`;
           case Loggout.LEVELS.debug:
             return `DEBUG - ${ts}:`;
-          case Loggout.LEVELS.log:
+          case Loggout.LEVELS.verbose:
             return `LOG - ${ts}:`;
           case Loggout.LEVELS.info:
             return `INFO - ${ts}:`;
@@ -28,11 +30,12 @@ export default class Loggout {
     this.timer = new Timer(() => {});
 
     this.LEVEL_NAMES = {
-      10: 'debug',
-      20: 'log',
-      30: 'info',
-      40: 'warn',
-      50: 'error',
+      10: 'silly',
+      20: 'debug',
+      30: 'verbose',
+      40: 'info',
+      50: 'warn',
+      60: 'error',
     };
   }
 
@@ -74,11 +77,12 @@ export default class Loggout {
    */
   static get LEVELS() {
     return {
-      debug: 10,
-      log: 20,
-      info: 30,
-      warn: 40,
-      error: 50,
+      silly: 10,
+      debug: 20,
+      verbose: 30,
+      info: 40,
+      warn: 50,
+      error: 60,
     };
   }
 
@@ -114,12 +118,16 @@ export default class Loggout {
     return true;
   }
 
+  silly(...args) {
+    return this.write(Loggout.LEVELS.silly, args);
+  }
+
   debug(...args) {
     return this.write(Loggout.LEVELS.debug, args);
   }
 
-  log(...args) {
-    return this.write(Loggout.LEVELS.log, args);
+  verbose(...args) {
+    return this.write(Loggout.LEVELS.verbose, args);
   }
 
   info(...args) {

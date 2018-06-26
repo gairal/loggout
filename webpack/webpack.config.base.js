@@ -5,17 +5,21 @@ const WriteFilePlugin = require('write-file-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/app/app.js',
-    examples: './src/examples/js/app.js',
+    'dist/app': './src/app/app.js',
+    'examples/app': './src/examples/js/app.js',
   },
   output: {
-    filename: 'js/[name].js',
+    path: path.join(__dirname, '../'),
+    filename: '[name].js',
+    library: 'loggout',
+    libraryTarget: 'umd',
   },
   plugins: [
-    new CleanWebpackPlugin(['build', 'dist'], { root: path.join(__dirname, '../') }),
+    new CleanWebpackPlugin(['dist', 'examples'], { root: path.join(__dirname, '../') }),
     new HtmlWebpackPlugin({
       template: './src/examples/index.pug',
       inject: true,
+      filename: 'examples/index.html',
     }),
     new WriteFilePlugin(),
   ],

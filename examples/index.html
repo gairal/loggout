@@ -1,0 +1,64 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Logg Out</title><meta name="description" content=""><meta name="robots" content="index, follow"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="icon" type="image/png" href="favicon.ico"><meta property="og:locale" content="fr_FR"><meta property="og:type" content="website"><meta property="og:title" content="Logg Out"><meta property="og:url" content=""><meta property="og:site_name" content=""><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" rel="stylesheet" type="text/css"><style type="text/css">body {
+  font-family: sans-serif;
+}
+
+.flex {
+  display: flex;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+code {
+  display: flex;
+  border: dotted 1px #aaa;
+  background-color: #ddd;
+  padding: 1rem;
+}
+
+button {
+  border: 0;
+  background-color: green;
+  padding: 1rem 2rem;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #eee;
+}</style></head><body><header><nav class="p-4"><h1>Logg Out</h1></nav></header><main class="p-4"><h2>Init</h2><code>import Loggout from 'loggout';
+<br />
+const loggout = new Loggout({
+  level: Loggout.LEVELS.debug,
+});</code><h3>Silly</h3><code>logger.silly('Hello World');</code><button class="mt-4 js-test__silly">test</button><h3>Debug</h3><code>logger.debug('Hello World');</code><button class="mt-4 js-test__debug">test</button><h3>Info</h3><code>logger.info('Hello World');</code><button class="mt-4 js-test__info">test</button><h3>Verbose</h3><code>logger.verbose('Hello World');</code><button class="mt-4 js-test__verbose">test</button><h3>Warn</h3><code>logger.warn('Hello World');</code><button class="mt-4 js-test__warn">test</button><h3>Error</h3><code>logger.error('Hello World');</code><button class="mt-4 js-test__error">test</button><h3>Timer</h3><code>const timelyMeth = () => {
+  <br />
+  &nbsp;let incr = 0;
+  <br />
+  &nbsp;for (const i = 1; i <= 1e6; i++) {
+  <br />
+  &nbsp;&nbsp;incr += i;
+  <br />
+  &nbsp;}
+  <br />
+}
+<br />
+logger.time(timelyMeth);</code><button class="mt-4 js-test__timer">test</button><h2>Custom prefix</h2><code>import Loggout from 'loggout';
+<br />
+const loggout = new Loggout({
+<br />
+  &nbsp;level: Loggout.LEVELS.debug,
+<br />
+  &nbsp;prefix: level => `LOGG(${level}):`,
+<br />
+});
+<br />
+loggout.error('test');</code><button class="mt-4 js-test__prefix">test</button></main><!-- Google Analytics: change UA-XXXXX-X to be your site ID. --><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-69246183-6', 'auto');
+ga('send', 'pageview');</script><script type="text/javascript" src="../dist/app.js"></script><script type="text/javascript" src="../examples/app.js"></script></body></html>

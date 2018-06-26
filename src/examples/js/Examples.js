@@ -1,3 +1,4 @@
+import Loggout from '@/Loggout';
 import Butt from './Butt';
 
 export default class Examples {
@@ -6,6 +7,10 @@ export default class Examples {
   }
 
   init() {
+    Butt.factory('silly', () => {
+      this.loggout.silly('test silly');
+    });
+
     Butt.factory('debug', () => {
       this.loggout.debug('test debug');
     });
@@ -14,8 +19,8 @@ export default class Examples {
       this.loggout.info('test info');
     });
 
-    Butt.factory('log', () => {
-      this.loggout.log('test log');
+    Butt.factory('verbose', () => {
+      this.loggout.verbose('test verbose');
     });
 
     Butt.factory('warn', () => {
@@ -32,9 +37,17 @@ export default class Examples {
         for (let i = 1; i <= 1e6; i += 1) {
           incr += i;
         }
-        this.loggout.log(incr);
+        this.loggout.verbose(incr);
       };
       this.loggout.time(timelyMeth);
+    });
+
+    Butt.factory('prefix', () => {
+      const loggout = new Loggout({
+        level: Loggout.LEVELS.debug,
+        prefix: level => `LOGG(${level}):`,
+      });
+      loggout.error('test prefix');
     });
   }
 }

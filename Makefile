@@ -24,6 +24,12 @@ release:
 	make install
 	npm run release
 
+# publish
+.PHONY: publish
+publish:
+	make release
+	npm publish
+
 # start
 .PHONY: start
 start:

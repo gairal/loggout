@@ -3,11 +3,10 @@ const config = require('./webpack.config.base');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const devConfig = Object.assign({}, config);
-devConfig.output.path = path.join(__dirname, '../build');
 devConfig.mode = 'development';
 devConfig.devtool = 'source-map';
 devConfig.devServer = {
-  contentBase: path.join(__dirname, '../build'),
+  contentBase: path.join(__dirname, '../examples'),
   compress: true,
   port: 3000,
 };

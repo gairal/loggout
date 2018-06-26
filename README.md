@@ -1,78 +1,121 @@
 # Logg Out
 
-Dead simple yet powerful logger for the browser
+Dead simple yet powerful ES6+ logger for the browser
 
-> Developped with [TailwindCss](https://tailwindcss.com/), [Sass](http://sass-lang.com), [Pug](https://pugjs.org/), [Babel](https://babeljs.io), [webpack](http://webpack.github.io), [Jest](https://facebook.github.io/jest/) and :heart:
+> Developped with [Babel](https://babeljs.io), [webpack](http://webpack.github.io), [Jest](https://facebook.github.io/jest/) and :heart:
 
 ___
 ## TODO:
-- [ ]: Google analytics on example
 - [ ]: switch to rollup
-- [ ]: update doc
 - [ ]: build system Travis
-- [ ]: create npm package
-- [ ]: timer method
-- [ ]: examples
 - [ ]: update stack with logger
 ___
 
-This seed repo is a starter kit for front-end developer that needs an environment allowing them to speed up development while ensuring good practice and overall quality.
+## Motivation
+This logger has been created for 2 main reasons
 
-* Best practice for HTML5, CSS and JavaScript organization
-* Code validation (HTML, JS, CSS)
-* HTML Templating
-* CSS Preprocessing
+1. Having my own simple and lightweight reusable logger
+2. As my first npm package
 
-## Quick start
-### Pre-requirements
-* Node version >= 8 + npm
-* Sass `gem install sass`
+## Usage
+Here is the simplest way to init and use the logger.
+You can find more examples in the `examples/` directory of this repo.
 
-```bash
-# clone the repo
-git clone https://github.com/gairal/webpack-stack.git
+``` js
+import Loggout from 'loggout';
+const logger = new Loggout({
+    level: Loggout.LEVELS.info;
+});
 
-# change directory to the repo
-cd webpack-stack
-
-# install the repo with npm
-npm install
-
-# start the server
-npm start
+logger.error('Hello world');
 ```
-go to [http://localhost:3000](http://localhost:3000) in your browser
 
 ---
 
 # Table of Contents
-* [File structure](#file-structure)
-* [Getting Started](#getting-started)
-    * [Dependencies](#dependencies)
-    * [Installing](#installing)
-    * [Running the app](#running-the-app)
+* [Installation](#installation)
+* [Logging](#logging)
+* [Contribute](#contribute)
+    * [File structure](#file-structure)
+    * [Getting Started](#getting-started)
+        * [Dependencies](#dependencies)
+        * [Installing](#installing)
+        * [Running the app](#running-the-app)
 * [License](#license)
 
-## File structure
+## Installation
 ```
-webpack-stack/
+npm install loggout
+```
+```
+yarn add loggout
+```
+
+## Logging Options
+``` js
+{
+    level: Loggout.LEVELS.info,
+    prefix: level => `LOGG(${level}):`,
+}
+```
+### level
+Log levels follows [RFC5424] ordering.
+
+``` js
+static get LEVELS() {
+    return {
+        silly: 10,
+        debug: 20,
+        verbose: 30,
+        info: 40,
+        warn: 50,
+        error: 60,
+    };
+}
+```
+
+Default level: `error`
+
+Levels can be assessed  through `Loggout.LEVELS` constant.
+
+### Prefix
+Prefix options expects a function receiving the level as parameter and returning a string.
+``` js
+(level) => {
+    const ts = Date.now();
+    switch (level) {
+        case Loggout.LEVELS.silly:
+            return `SILLY - ${ts}:`;
+        case Loggout.LEVELS.debug:
+            return `DEBUG - ${ts}:`;
+        case Loggout.LEVELS.verbose:
+            return `LOG - ${ts}:`;
+        case Loggout.LEVELS.info:
+            return `INFO - ${ts}:`;
+        case Loggout.LEVELS.warn:
+            return `WARN - ${ts}:`;
+        case Loggout.LEVELS.error:
+            return `ERROR - ${ts}:`;
+        default:
+            return '';
+    }
+}
+```
+
+## Contribute
+### File structure
+```
+loggout/
  ├──src/                             * our source files that will be compiled to javascript
- │   ├──index.pug                    * our index.html
+ |   ├──app/                         * Lib sources
  │   │
- │   ├──html/                        * where you keep your pug templates
- │   │   └──layout.pug               * the main pug layout
- │   │
- │   ├──app/                         * JavaScript/ES2015 files
- │   │
- │   ├──root/                        * files that will be copied to the root of the compiled site (robots.txt, favicon, ...)
- │   │
- │   ├──img/                         * images
- │   └──scss/                        * Sass files
- │       ├──app.scss                 * Main Sass files
- │       └──common/                  * Sass common files
- │           ├──_libs.scss           * 3rd-party libs import
- │           ├──_mixins.scss         * for you own Sass mixins here
- │           └──_variables.scss      * for your sass variables
+ |   └──examples/                    * examples sources
+ │       ├──index.pug                * our index.html
+ │       │
+ │       ├──html/                    * where you keep your pug templates
+ │       │   └──layout.pug           * the main pug layout
+ │       │
+ │       └──app/                     * JavaScript/ES2015 files
  │
  ├──test/                            * Jest test definitions
  │
@@ -81,49 +124,48 @@ webpack-stack/
  │   ├──webpack.config.js            * Development overrides
  │   └──webpack.config.prod.js       * Production overrides
  │
- └──package.json                     * what npm uses to manage it's dependencies
+ └──package.json                     * package.json
 ```
-## Getting Started
-### Dependencies
+### Getting Started
+#### Dependencies
 You need to install the following on you system
-* `node` and `npm` (`brew install node`)
+* `node` and `npm`
 * Ensure you running Node version >= 8.0.0
-* ruby (`brew install ruby`)
 
-Then install tools you'll need to run the app
-* sass (`gem install sass`)
-
-### Installing
-* `fork` this repo
+#### Installing
+* `fork` the github repo [https://github.com/gairal/loggout](https://github.com/gairal/loggout)
 * `clone` your fork
 * `npm install` to install all dependencies
 * `make start` or `npm start` to start the dev server
 
-### Running the app
+#### Running the app
 After all dependencies are installed, just run `make start` to start a local server using `webpack-dev-server` which will watch your files and build them.
 webpack-dev-server will display the address and port of your server (by default, `http://0.0.0.0:3000`).
 
-## Build commands
-### Server
+### Build commands
+#### Server
 ```bash
 # build files then launch the server and watch files
 make start
 ```
-### Build files
+#### Build files
 ```bash
 # build files in ./build/ (Webpack, Sass, Pug) and validate them
 make build
 # "compile" files in ./dist/
-# minify and concatenate every css and js including
-# Optimize images compression
-# Site ready for production
+# minify and concatenate assets
 make release
 ```
-### Validate files
+#### Validate files
 ```bash
-# runs the validations htmlhint, eslint, csslint, sasslint, TsLint
+# runs the validations eslint and jest tests
 make test
 ```
 
 ## License
 [MIT](/LICENSE.md)
+
+#### Author: [Frank Gairal]
+
+[Frank Gairal]: http://github.com/gairal
+[RFC5424]: https://tools.ietf.org/html/rfc5424

@@ -1,19 +1,19 @@
 {
   "name": "loggout",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Dead simple yet powerful logger for the browser",
   "author": "Frank Gairal <frank@gairal.com> (https://frank.gairal.com/)",
   "readmeFilename": "README.md",
   "homepage": "https://github.com/gairal/loggout",
   "bugs": {
-    "url" : "https://github.com/gairal/loggout/issues",
-    "email" : "frank@gairal.com"
+    "url": "https://github.com/gairal/loggout/issues",
+    "email": "frank@gairal.com"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/gairal/loggout.git"
+    "type": "git",
+    "url": "https://github.com/gairal/loggout.git"
   },
-  "license" : "MIT",
+  "license": "MIT",
   "main": "dist/app.js",
   "keywords": [
     "browser",

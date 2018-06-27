@@ -4,12 +4,6 @@ Dead simple yet powerful ES6+ logger for the browser
 
 > Developped with [Babel](https://babeljs.io), [webpack](http://webpack.github.io), [Jest](https://facebook.github.io/jest/) and :heart:
 
-___
-## TODO:
-- [ ]: switch to rollup
-- [ ]: build system Travis
-___
-
 ## Motivation
 This logger has been created for 2 main reasons
 
